@@ -38,7 +38,7 @@ func resourceRules() *schema.Resource {
 				Required:         true,
 				DiffSuppressFunc: suppressRuleGroupDiff,
 				StateFunc:        normaliseYAMLState,
-		  },
+			},
 		},
 	}
 }
