@@ -12,7 +12,7 @@ var (
 )
 
 func cortexProvider() (*schema.Provider, error) {
-    err := os.Setenv(EnvCortexAddress,  "http://localhost:8080")
+    err := os.Setenv(EnvCortexAddress, "http://127.0.0.1:8080")
     if err != nil {
         return nil, err
     }

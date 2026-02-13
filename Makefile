@@ -2,7 +2,7 @@ HOSTNAME=registry.terraform.io
 NAMESPACE=inuits
 NAME=cortex
 BINARY=terraform-provider-${NAME}
-VERSION=0.0.4
+VERSION=0.6.0
 OS_ARCH=darwin_amd64
 
 default: install
@@ -54,8 +54,8 @@ dev.tfrc:
 
 .PHONY: cortex-up
 cortex-up:
-	docker-compose up -d
+	docker compose up -d
 
 .PHONY: cortex-down
 cortex-down:
-	docker-compose down
+	docker compose down

@@ -93,7 +93,7 @@ EOT
 
 func testAccPreCheck(t *testing.T, namespace, name string) {
     cortexClient, err := client.New(client.Config{
-        Address: "http://localhost:8080",
+        Address: "http://127.0.0.1:8080",
     })
     require.NoError(t, err)
 
