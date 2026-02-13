@@ -32,13 +32,13 @@ func resourceRules() *schema.Resource {
 				Required:    true,
 				ForceNew:    true,
 			},
-		"content": &schema.Schema{
-			Description:      "Rule group content.",
-			Type:             schema.TypeString,
-			Required:         true,
-			DiffSuppressFunc: suppressRuleGroupDiff,
-			StateFunc:        normaliseYAMLState,
-		},
+			"content": &schema.Schema{
+				Description:      "Rule group content.",
+				Type:             schema.TypeString,
+				Required:         true,
+				DiffSuppressFunc: suppressRuleGroupDiff,
+				StateFunc:        normaliseYAMLState,
+		  },
 		},
 	}
 }
