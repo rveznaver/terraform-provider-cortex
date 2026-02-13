@@ -3,12 +3,12 @@ package cortex
 import (
 	"context"
 	"fmt"
+	"strings"
+
 	"github.com/grafana/cortex-tools/pkg/rules/rwrulefmt"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
-	"github.com/prometheus/prometheus/pkg/rulefmt"
 	"gopkg.in/yaml.v3"
-	"strings"
 )
 
 func resourceRules() *schema.Resource {
@@ -60,14 +60,10 @@ func resourceRulesCreate(ctx context.Context, d *schema.ResourceData, m interfac
 		return diag.FromErr(err)
 	}
 
-	var rg rulefmt.RuleGroup
-	err = yaml.Unmarshal([]byte(content), &rg)
+	var ruleGroup rwrulefmt.RuleGroup
+	err = yaml.Unmarshal([]byte(content), &ruleGroup)
 	if err != nil {
 		return diag.FromErr(err)
-	}
-
-	ruleGroup := rwrulefmt.RuleGroup{
-		RuleGroup: rg,
 	}
 
 	err = client.CreateRuleGroup(ctx, namespace, ruleGroup)
@@ -75,7 +71,7 @@ func resourceRulesCreate(ctx context.Context, d *schema.ResourceData, m interfac
 		return diag.FromErr(err)
 	}
 
-	d.SetId(fmt.Sprintf("%s/%s/%s", rg.Name, namespace, tenantID))
+	d.SetId(fmt.Sprintf("%s/%s/%s", ruleGroup.Name, namespace, tenantID))
 
 	return resourceRulesRead(ctx, d, m)
 }
