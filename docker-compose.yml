@@ -1,8 +1,10 @@
 services:
   cortex:
-    image: quay.io/cortexproject/cortex:v1.10.0
+    image: quay.io/cortexproject/cortex:v1.20.1
     ports:
       - "8080:8080"
     volumes:
       - ./cortex.yaml:/etc/cortex/cortex.yaml:ro
-    command: -config.file=/etc/cortex/cortex.yaml
+    entrypoint: ["/bin/sh", "-c"]
+    command:
+      - "mkdir -p /tmp/cortex/rules /tmp/cortex/alertmanager /tmp/cortex/tsdb /tmp/cortex/tsdb-sync /tmp/cortex/blocks /tmp/cortex/compactor && exec /bin/cortex -config.file=/etc/cortex/cortex.yaml"
