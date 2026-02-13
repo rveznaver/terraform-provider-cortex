@@ -23,6 +23,11 @@ import (
 	"github.com/inuits/terraform-provider-cortex/internal/cortex"
 )
 
+var (
+	version string
+	commit  string
+)
+
 func main() {
 	plugin.Serve(&plugin.ServeOpts{
 		ProviderFunc: func() *schema.Provider {

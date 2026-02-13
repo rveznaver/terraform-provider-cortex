@@ -4,9 +4,9 @@ go 1.26
 
 require (
 	github.com/grafana/cortex-tools v0.11.3
-	gopkg.in/yaml.v3 v3.0.1
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.31.0
 	github.com/stretchr/testify v1.11.1
+	gopkg.in/yaml.v3 v3.0.1
 )
 
 require (
