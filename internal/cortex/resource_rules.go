@@ -37,6 +37,7 @@ func resourceRules() *schema.Resource {
 				Type:             schema.TypeString,
 				Required:         true,
 				DiffSuppressFunc: suppressRuleGroupDiff,
+				StateFunc:        normaliseYAMLState,
 			},
 		},
 	}
@@ -135,7 +136,12 @@ func resourceRulesRead(ctx context.Context, d *schema.ResourceData, m interface{
 		return diag.FromErr(err)
 	}
 
-	d.Set("content", string(out))
+	normalised, err := formatYAML(string(out))
+	if err != nil {
+		return diag.FromErr(err)
+	}
+
+	d.Set("content", normalised)
 
 	return diags
 }

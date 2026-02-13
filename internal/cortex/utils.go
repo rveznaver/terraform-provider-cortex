@@ -21,6 +21,14 @@ func formatYAML(input string) (string, error) {
 	return string(out), nil
 }
 
+func normaliseYAMLState(v interface{}) string {
+	normalised, err := formatYAML(v.(string))
+	if err != nil {
+		return v.(string)
+	}
+	return normalised
+}
+
 func suppressYAMLDiff(_, old, new string, _ *schema.ResourceData) bool {
 	olds, err := formatYAML(old)
 	if err != nil {
