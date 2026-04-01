@@ -1,4 +1,4 @@
-# v0.6.0 - 2026-02-13
+# v0.0.7 - 2026-04-01
 
 - Docker-based dev/test runs on Cortex v1.20.1 (blocks storage); config and compose updated accordingly.
 - Terraform Plugin SDK and cortex-tools upgraded; direct Prometheus dependency removed (replace directives in go.mod).

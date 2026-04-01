@@ -1,8 +1,8 @@
 HOSTNAME=registry.terraform.io
-NAMESPACE=inuits
+NAMESPACE=rveznaver
 NAME=cortex
 BINARY=terraform-provider-${NAME}
-VERSION=0.6.0
+VERSION=0.0.7
 OS_ARCH=darwin_amd64
 
 # Release build: strip symbols and debug info, trim paths, inject version/commit (smaller binaries)
@@ -47,7 +47,7 @@ clean:
 dev.tfrc:
 	echo 'provider_installation {' >> dev.tfrc
 	echo '  dev_overrides {' >> dev.tfrc
-	echo '    "form3tech-oss/cortex" = "$(CURDIR)"' >> dev.tfrc
+	echo '    "rveznaver/cortex" = "$(CURDIR)"' >> dev.tfrc
 	echo '  }' >> dev.tfrc
 	echo '  direct {}' >> dev.tfrc
 	echo '}' >> dev.tfrc

@@ -20,7 +20,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/plugin"
 
-	"github.com/inuits/terraform-provider-cortex/internal/cortex"
+	"github.com/rveznaver/terraform-provider-cortex/internal/cortex"
 )
 
 var (

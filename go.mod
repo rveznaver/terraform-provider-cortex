@@ -1,4 +1,4 @@
-module github.com/inuits/terraform-provider-cortex
+module github.com/rveznaver/terraform-provider-cortex
 
 go 1.26
 
